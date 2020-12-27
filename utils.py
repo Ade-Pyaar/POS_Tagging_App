@@ -112,7 +112,7 @@ def my_preprocess(vocab, sentence):
             orig.append(word.strip())
             prep.append(word.strip())
 
-    return prep
+    return orig, prep
 
 
 
