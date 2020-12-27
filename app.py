@@ -27,13 +27,12 @@ my_text = st.text_input("Enter your sentence...", "A sample sentence.", max_char
 
 if st.button('Get POS tags', 'run_model'):
     vocab, emission_count = get_emission_and_vocab()
-    prep = my_preprocess(vocab, my_text)
+    orig, prep = my_preprocess(vocab, my_text)
     final = predict_pos(prep, emission_count, vocab)
 
     to_display = {}
-    text_l = my_text.split(' ')
 
-    for i in range(len(text_l)):
-        to_display[text_l[i]] = final[i]
+    for i in range(len(orig)):
+        to_display[orig[i]] = final[i]
 
     st.write("The POS tags for your sentence are:", to_display)
