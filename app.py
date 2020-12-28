@@ -9,11 +9,9 @@ st.sidebar.write("POS tagging app using a simple tagger.")
 st.sidebar.write("This is just a small model that predict the part of speech for each word in the sentence with respect to context.")
 st.sidebar.write("The model is not perfect, so it may miss out some words...")
 st.sidebar.write("Don't mind the crude display of the tags :)")
-st.sidebar.write("Press the below button to display the meaning of the POS tags, but it will close the displayed tags in the main page.")
-st.sidebar.write("If you don't want that, check the meaning using this link: https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html")
-if st.sidebar.button("Show meaning of tags", 'show_tags'):
-    total_tags = read_csv('tags.csv')
-    st.sidebar.write(total_tags)
+st.sidebar.write("Below is a table showing the tags and their meaning")
+total_tags = read_csv('tags.csv')
+st.sidebar.write(total_tags)
 
 
 #start the user interface

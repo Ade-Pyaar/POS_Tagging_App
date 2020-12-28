@@ -1,13 +1,4 @@
 Tags,Meaning
-"#","Pound sign"
-"$","Dollar sign"
-"''","Single qoutes"
-"(","Opening bracket"
-")","Closing bracket"
-",","Comma"
-"--s--","Start of sentence"
-".","Full stop"
-":","Colon"
 "CC","Coordinating conjunction"
 "CD","Cardinal number"
 "DT","Determiner"
@@ -44,4 +35,3 @@ Tags,Meaning
 "WP","Wh-pronoun"
 "WP$","Possessive wh-pronoun"
 "WRB","Wh-adverb"
-"``","None"

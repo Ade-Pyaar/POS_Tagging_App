@@ -80,19 +80,11 @@ def my_preprocess(vocab, sentence):
     file = sentence.split()
     new_file = []
     for word in file:
-        if any(char in punct for char in word):
-            for i in punct:
-                s_l = word.split(i)
-                if len(s_l) < 2:
-                    continue
-                else:
-                    s_l[1] = i+s_l[1]
-                    for j in s_l:
-                        new_file.append(j)
-        else:
-            new_file.append(word)
+        for pun in punct:
+            word = word.replace(pun,'')
+        new_file.append(word)
 
-    for cnt, word in enumerate(new_file):
+    for _, word in enumerate(new_file):
 
         # End of sentence
         if not word.split():
@@ -112,7 +104,7 @@ def my_preprocess(vocab, sentence):
             orig.append(word.strip())
             prep.append(word.strip())
 
-    return orig, prep
+    return new_file, prep
 
 
 
@@ -127,14 +119,14 @@ def predict_pos(prep, emission_counts, vocab):
         tags: a list of POS tags for prep
     '''
     
-    states = ['#', '$', "''", '(', ')', ',', '--s--', '.', ':', 'CC', 'CD', 'DT', 'EX', 'FW', 'IN', 'JJ',
+    states = ['CC', 'CD', 'DT', 'EX', 'FW', 'IN', 'JJ',
               'JJR', 'JJS', 'LS', 'MD', 'NN', 'NNP', 'NNPS', 'NNS', 'PDT', 'POS', 'PRP', 'PRP$', 'RB',
               'RBR', 'RBS', 'RP', 'SYM', 'TO', 'UH', 'VB', 'VBD','VBG', 'VBN', 'VBP', 'VBZ', 'WDT',
-              'WP', 'WP$', 'WRB', '``']
+              'WP', 'WP$', 'WRB']
 
     
     # Get the (tag, word) tuples, stored as a set
-    all_words = set(emission_counts.keys())
+    # all_words = set(emission_counts.keys())
     pos_list = []
     
     for word in prep:
